@@ -26,13 +26,15 @@ if (process.env.NODE_ENV != 'production') {
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 
+app.get('/', (req, res, next) => {
+    res.send('Node server is running');
+});
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server listening to ${PORT}`);
 });
 
-// middleware error handler
 app.use(function (err, req, res, next){
     console.error(err.stack)
     res.status(500).send({

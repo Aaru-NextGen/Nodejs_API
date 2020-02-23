@@ -20,7 +20,7 @@ module.exports.login = async ({email, password}) => {
         user.loggedin = true;
         let result = await user.save();
         console.log(result);
-        const token = jwt.sign({id: user._id}, process.env.USER_SECRET_KEY);
+        const token = jwt.sign({id: user._id}, process.env.USER_SECRET_KEY, {expiresIn: constants.userMessage.EXPIRES_IN});
 
         return { token };
     } catch (error) {
