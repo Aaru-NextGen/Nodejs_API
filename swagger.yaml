@@ -1,0 +1,235 @@
+swagger: '2.0'
+info:
+  description: Node.js Rest API doc
+  version: '1.0.0'
+  title: Node Rest API documentation
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: arunprabhath2010@gmail.com 
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: localhost:3002
+basePath: /api/v1
+schemes:
+- http
+paths:
+  /user/login:
+    post:
+      tags:
+        - User Module
+      summary: Login
+      description: API for Login
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Login Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/logout:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Logout
+      description: API for Logout
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Logout Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/details:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Get the User Details
+      description: API for User details
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successfull fetch
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/posts:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Get the User Posts
+      description: API for User Posts
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successfull fetch
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/update_profile_picture:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Update user profile picture
+      description: API for edit profile picture
+      consumes: 
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          description: Profile ficture
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successfull fetch
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /admin/login:
+    post:
+      tags:
+        - Admin Module
+      summary: Login as admin
+      description: API for login as admin
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Login Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /admin/logout:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Admin Module
+      summary: Login as admin
+      description: API for login as admin
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Logout Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /admin/users:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Admin Module
+      summary: Get all Users Details
+      description: API for User details
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successfull fetch
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /admin/posts:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Admin Module
+      summary: Get all Posts
+      description: API for Posts
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successfull fetch
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  User:
+    properties:
+      email:
+        type: string
+        description: email of user
+      password:
+        type: string
+        description: password of the user
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+  
