@@ -34,7 +34,7 @@ http://localhost:3002/ You should see a message "Node server is running". if not
     NODE_ENV=dev
 
 ## Documentation and Testing (swagger-ui-express)
-  visit : http://localhost/3002/api-docs
+  visit : http://localhost:3002/api-docs
     
 ## User urls 
    sample user credetials: 
@@ -44,14 +44,14 @@ http://localhost:3002/ You should see a message "Node server is running". if not
       
   User after successfull login gets JSON webtoken (JWT). This token will have an expire time, configured in constants/index.js folder. This JWT is further used for validation.
   
-    http://localhost/3002//api/v1/user/login
+    http://localhost:3002/api/v1/user/login
    
 The JWT got white logging should be send in headers to get details
 
-    http://localhost/3002/api/v1/user/logout
-    http://localhost/3002/api/v1/user/details
-    http://localhost/3002/api/v1/user/posts
-    http://localhost/3002/api/v1/user/update_profile_picture
+    http://localhost:3002/api/v1/user/logout
+    http://localhost:3002/api/v1/user/details
+    http://localhost:3002/api/v1/user/posts
+    http://localhost:3002/api/v1/user/update_profile_picture
   
   
  ## Admin url
@@ -62,11 +62,11 @@ The JWT got white logging should be send in headers to get details
  
  admin after loggin gets JSON webtoken (JWT). This token will have an expire time, configured in constants/index.js folder. This JWT is further used for validation.
  
-    http://localhost/3002//api/v1/admin/login
+    http://localhost:3002/api/v1/admin/login
 
 The JWT got white logging should be send in headers to get details
 
-    http://localhost/3002/api/v1/admin/logout
-    http://localhost/3002/api/v1/admin/users
-    http://localhost/3002/api/v1/admin/posts
+    http://localhost:3002/api/v1/admin/logout
+    http://localhost:3002/api/v1/admin/users
+    http://localhost:3002/api/v1/admin/posts
   
