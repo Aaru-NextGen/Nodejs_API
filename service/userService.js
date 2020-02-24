@@ -1,6 +1,6 @@
 const User = require('../database/models/userModel');
 const constants = require('../constants/index');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 
@@ -9,7 +9,7 @@ module.exports.login = async ({email, password}) => {
     try {
         
         const user = await User.findOne({email});
-        console.log(user);
+        // console.log(user);
         if (!user) {
             throw new Error(constants.userMessage.USER_NOT_FOUND);
         }
@@ -19,7 +19,7 @@ module.exports.login = async ({email, password}) => {
         }
         user.loggedin = true;
         let result = await user.save();
-        console.log(result);
+        // console.log(result);
         const token = jwt.sign({id: user._id}, process.env.USER_SECRET_KEY, {expiresIn: constants.userMessage.EXPIRES_IN});
 
         return { token };

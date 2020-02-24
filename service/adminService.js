@@ -1,7 +1,7 @@
 const Admin = require('../database/models/adminModel');
 const Users = require('../database/models/userModel');
 const constants = require('../constants/index');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 module.exports.login = async ({email, password}) => {
