@@ -1,10 +1,9 @@
 const fetch = require('node-fetch');
 const userSchema = require('./database/models/userModel')
-// const viewerSchema = require('./database/models/viewerModel')
 const adminSchema = require('./database/models/adminModel')
 const dbConnection = require('./database/connection')
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const fill_all_details = async () => {
     const users = await fetch('https://jsonplaceholder.typicode.com/users').then( json => {return json.json()});
